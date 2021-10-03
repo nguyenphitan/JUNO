@@ -15,41 +15,46 @@ let rect_header = header.getBoundingClientRect();
 // List-product
 const product = document.querySelector('.list__item2');
 const listProduct = document.querySelector('.list__product');
+const closeListProduct = document.querySelector('.product__footer i');
 let rect_Product = product.getBoundingClientRect();
 let rect_listProduct = listProduct.getBoundingClientRect();
 
 product.addEventListener("mousemove", function(event) {
-    listProduct.style.display = 'block';
+    listProduct.style.transform = 'translateY(0%)';
     header.style.backgroundColor = '#fff';
 })
 
-product.addEventListener("mouseleave", function(event) {
-    let x = event.clientX;
-    let y = event.clientY;
-    if( rect_Product.left <= x && x <= rect_Product.right && y <= rect_Product.bottom + 30) {
-        listProduct.style.display = 'block';
-        header.style.backgroundColor = '#fff';
-    }
-    else {
-        listProduct.style.display = 'none';
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-    }
-})
+closeListProduct.onclick = function() {
+    listProduct.style.transform = 'translateY(-100%)';
+}
 
-listProduct.addEventListener("mousemove", function(event) {
-    header.style.backgroundColor = '#fff';
-})
+// product.addEventListener("mouseleave", function(event) {
+//     let x = event.clientX;
+//     let y = event.clientY;
+//     if( rect_Product.left <= x && x <= rect_Product.right && y <= rect_Product.bottom + 30) {
+//         listProduct.style.display = 'block';
+//         header.style.backgroundColor = '#fff';
+//     }
+//     else {
+//         listProduct.style.display = 'none';
+//         header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+//     }
+// })
 
-listProduct.addEventListener("mouseout", function(event) {
-    listProduct.style.display = 'none';
-    header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-    if(event.target.classList.contains('product__item') || event.target.classList.contains('product__freeShip') 
-        || event.target.classList.contains('product__container') || event.target.classList.contains('product__content')
-        || event.target.classList.contains('pr__content__item') ) {
-        listProduct.style.display = 'block';
-        header.style.backgroundColor = '#fff';
-    }
-})
+// listProduct.addEventListener("mousemove", function(event) {
+//     header.style.backgroundColor = '#fff';
+// })
+
+// listProduct.addEventListener("mouseout", function(event) {
+//     header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+//     if(event.target.classList.contains('product__item') || event.target.classList.contains('product__freeShip') 
+//         || event.target.classList.contains('product__container') || event.target.classList.contains('product__content')
+//         || event.target.classList.contains('pr__content__item') ) {
+//         listProduct.style.display = 'block';
+//         header.style.backgroundColor = '#fff';
+//     }
+//     else listProduct.style.display = 'none';
+// })
 
 // list product overlay
 const openProductOverlay = document.querySelector('.nav__item.item2 .fa-chevron-right');
